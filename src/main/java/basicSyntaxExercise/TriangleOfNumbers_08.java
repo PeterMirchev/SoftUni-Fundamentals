@@ -2,7 +2,7 @@ package basicSyntaxExercise;
 
 import java.util.Scanner;
 
-public class TriangleOfNumbers_07 {
+public class TriangleOfNumbers_08 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
