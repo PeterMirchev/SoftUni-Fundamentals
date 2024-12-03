@@ -52,7 +52,7 @@ public class VendingMachine_07 {
                     System.out.println("Invalid product");
                     command = scanner.nextLine();
                     continue;
-            }
+            }//
 
            if (totalMoney >= productPrice) {
                System.out.printf("Purchased %s%n", product);
