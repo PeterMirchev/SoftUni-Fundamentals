@@ -21,7 +21,7 @@ public class Ages_01 {
         } else if (age >= 66) {
             person = "elder";
         }
-//
+
         System.out.println(person);
     }
 }
