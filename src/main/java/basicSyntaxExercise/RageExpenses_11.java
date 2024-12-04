@@ -14,18 +14,13 @@ public class RageExpenses_11 {
 
         int headsetTrashTimes = lostGames / 2;
         int mouseTrashTimes = lostGames / 3;
-        int keyboardTrashTimes = 0;
-        int displayTrashTimes = 0;
+        int keyboardTrashTimes = lostGames / 6;
+        int displayTrashTimes = lostGames / 12;
 
-        for (int i = 6; i <=  lostGames; i += 6) {
-            keyboardTrashTimes++;
-        }
-
-        for (int i = 12; i <= lostGames; i += 12) {
-            displayTrashTimes++;
-        }
-
-        double totalPrice = (headsetPrice * headsetTrashTimes) + (mousePrice * mouseTrashTimes) + (keyboardPrice * keyboardTrashTimes) + (displayPrice * displayTrashTimes);
+        double totalPrice = (headsetPrice * headsetTrashTimes) +
+                (mousePrice * mouseTrashTimes) +
+                (keyboardPrice * keyboardTrashTimes) +
+                (displayPrice * displayTrashTimes);
 
         System.out.printf("Rage expenses: %.2f lv.", totalPrice);
     }
