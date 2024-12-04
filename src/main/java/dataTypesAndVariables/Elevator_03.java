@@ -9,19 +9,14 @@ public class Elevator_03 {
         int people = Integer.parseInt(scanner.nextLine());
         int capacity = Integer.parseInt(scanner.nextLine());
 
-        int courses = people / capacity;
-        int remainingPeople = people % capacity;
+        int courses = 0;
+        while (people > 0) {
 
-        if (people % capacity == 0) {
-            System.out.println(courses);
-        } else {
-            if (remainingPeople <= capacity) {
-                System.out.println(courses + 1);
-            } else {
-                int remainingCourses = capacity / remainingPeople;
-                System.out.println(courses + remainingCourses);
-            }
+            people -= capacity;
+            courses++;
         }
+
+        System.out.println(courses);
 
     }
 }
