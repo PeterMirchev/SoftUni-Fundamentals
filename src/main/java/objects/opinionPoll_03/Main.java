@@ -22,7 +22,7 @@ public class Main {
         }
 
         users.stream()
-                .filter(u -> u.getAge() >= 30)
+                .filter(u -> u.getAge() > 30)
                 .forEach(System.out::println);
     }
 }
