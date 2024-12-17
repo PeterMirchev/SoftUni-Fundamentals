@@ -34,9 +34,9 @@ public class Courses_05 {
             }
         }*/
 
-        coursesAndStudents.forEach((k, v) -> {
-            System.out.println(k + ": " + v.size());
-            v.forEach(e -> System.out.println("-- " + e));
+        coursesAndStudents.forEach((key, value) -> {
+            System.out.println(key + ": " + value.size());
+            value.forEach(student -> System.out.println("-- " + student));
         });
     }
 }
