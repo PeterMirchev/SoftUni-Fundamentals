@@ -7,19 +7,19 @@ public class CommonElements_02 {
         Scanner scanner = new Scanner(System.in);
 
         // прочитам първи масив
-        String[] first = scanner.nextLine().split(" ");
+        String[] firstArray = scanner.nextLine().split(" ");
         // прочитам втори масив
-        String[] second = scanner.nextLine().split(" ");
+        String[] secondArray = scanner.nextLine().split(" ");
 
         // обхождам втория масив
-        for (int position = 0; position < second.length; position++) {
+        for (int position = 0; position < secondArray.length; position++) {
             // запазвам всеки един стринг в проленлива
-            String currentText = second[position];
+            String currentText = secondArray[position];
             // обхождам първия масив
-            for (int index = 0; index < first.length; index++) {
+            for (int index = 0; index < firstArray.length; index++) {
 
                 //проверявам дали currentText е равна на една от стойностите в първия масив
-                if (currentText.equals(first[index])) {
+                if (currentText.equals(firstArray[index])) {
                     System.out.print(currentText + " ");
                 }
             }

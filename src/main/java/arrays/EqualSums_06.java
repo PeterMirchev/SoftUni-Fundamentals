@@ -27,12 +27,12 @@ public class EqualSums_06 {
             int rightSum = 0;
 
             // взимам всички леви числа
-            for (int left = 0; left < position; left++) {
-                leftSum += array[left];
+            for (int leftPosition = 0; leftPosition < position; leftPosition++) {
+                leftSum += array[leftPosition];
             }
             // взимам всички десни числа
-            for (int right = position + 1; right <= array.length - 1; right++) {
-                rightSum += array[right];
+            for (int rightPosition = position + 1; rightPosition <= array.length - 1; rightPosition++) {
+                rightSum += array[rightPosition];
             }
 
             if (leftSum == rightSum) {

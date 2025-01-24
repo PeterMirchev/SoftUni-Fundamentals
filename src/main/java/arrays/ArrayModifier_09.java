@@ -13,7 +13,7 @@ public class ArrayModifier_09 {
                 .toArray();
 
         String input = scanner.nextLine();
-        while (!input.split(" ")[0].equals("end")) {
+        while (!input.equals("end")) {
 
             //взимам командата която ще трябва да извърша
             String command = input.split(" ")[0];
@@ -24,9 +24,10 @@ public class ArrayModifier_09 {
                 // взимам втория елемент
                 int secondIndex = Integer.parseInt(input.split(" ")[2]);
 
+                //взимам числата
                 int firstElement = array[firstIndex];
                 int secondElement = array[secondIndex];
-                //разменям елементите
+                //разменям числата
                 array[firstIndex] = secondElement;
                 array[secondIndex] = firstElement;
             } else if (command.equals("multiply")) {
@@ -34,12 +35,14 @@ public class ArrayModifier_09 {
                 int firstIndex = Integer.parseInt(input.split(" ")[1]);
                 // взимам втория елемент
                 int secondIndex = Integer.parseInt(input.split(" ")[2]);
+
                 int multiply = array[firstIndex] * array[secondIndex];
 
                 array[firstIndex] = multiply;
             } else if (command.equals("decrease")) {
                 for (int i = 0; i <= array.length - 1; i++) {
-                    array[i] = array[i] - 1;
+                    //array[i] = array[i] - 1;
+                    array[i]--;
                 }
             }
             input = scanner.nextLine();

@@ -15,8 +15,12 @@ public class ZigZagArrays_03 {
         int[] secondArray = new int[n];
 
         //прочитам n на брой редове
-        for (int i = 0; i < n; i++) {
+        for (int row = 1; row <= n; row++) {
 
+            //int[] array = Arrays
+            //                .stream(scanner.nextLine().split(" ")) //"1 2 3 5".splt-> {"1","2","3","5"}
+            //                .mapToInt(Integer:: parseInt)// {1, 2, 3, 5}
+            //                .toArray();
             //прочитам сегашен ред
             String input = scanner.nextLine();
             //сплитвам текста по празно място, получавам масив от стринг и след това достъпвам елементите на масива по техния индекс
@@ -24,12 +28,12 @@ public class ZigZagArrays_03 {
             int secondNumber = Integer.parseInt(input.split(" ")[1]);
 
             //правя проверка дали реда е четен или нечетен
-            if (i % 2 == 0) {
-                firstArray[i] = firstNumber;
-                secondArray[i] = secondNumber;
+            if (row % 2 != 0) {
+                firstArray[row - 1] = firstNumber;
+                secondArray[row - 1] = secondNumber;
             } else {
-                firstArray[i] =secondNumber;
-                secondArray[i] = firstNumber;
+                firstArray[row - 1] =secondNumber;
+                secondArray[row - 1] = firstNumber;
             }
         }
 
