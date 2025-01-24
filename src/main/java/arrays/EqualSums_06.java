@@ -8,14 +8,16 @@ public class EqualSums_06 {
         Scanner scanner = new Scanner(System.in);
 
         int[] array = Arrays
-                .stream(scanner.nextLine().split(" "))
-                .mapToInt(Integer::parseInt)
+                .stream(scanner.nextLine().split(" "))// "1 2 3 3" split -> {"1","2","3","3"}
+                .mapToInt(Integer::parseInt) // {1, 2, 3, 3}
                 .toArray();
 
         boolean isFound = false;
 
+        // обхождам масива зада проверя всяко едно число
         for (int position = 0; position < array.length; position++) {
 
+            // ако масива има само едно число то го принтирам
             if (array.length == 1) {
                 System.out.println(0);
                 break;
@@ -24,9 +26,11 @@ public class EqualSums_06 {
             int leftSum = 0;
             int rightSum = 0;
 
+            // взимам всички леви числа
             for (int left = 0; left < position; left++) {
                 leftSum += array[left];
             }
+            // взимам всички десни числа
             for (int right = position + 1; right <= array.length - 1; right++) {
                 rightSum += array[right];
             }
@@ -38,6 +42,7 @@ public class EqualSums_06 {
             }
         }
 
+        // ако не сме намерили равни суми и масива има повече от един елемент принтирам "no"
         if (!isFound && array.length > 1) {
             System.out.println("no");
         }

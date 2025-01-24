@@ -14,22 +14,28 @@ public class TopIntegers_05 {
 
         for (int position = 0; position <= array.length - 1; position++) {
 
+            // правя проверка дали чослото н е последно от масива
             if (position == array.length - 1) {
                 System.out.println(array[position]);
                 break;
             }
+
+            // запазвам сегашното число
             int currentNum = array[position];
 
             boolean isTopInteger = true;
             for (int nextPosition = position + 1; nextPosition <= array.length - 1; nextPosition++) {
 
+                // взимам следващото число
                 int nextNumber = array[nextPosition];
 
-                if (array[nextPosition] >= currentNum) {
+                //правя проверка дали следващото е по-голямо, ако да, слагам брейк на следващите итерации
+                if (nextNumber >= currentNum) {
                     isTopInteger = false;
                     break;
                 }
             }
+            //ако числото е топ, го принтирам
             if (isTopInteger) {
                 System.out.print(currentNum + " ");
             }

@@ -13,13 +13,20 @@ public class MagicSum_08 {
                 .toArray();
 
         int magicNumber = Integer.parseInt(scanner.nextLine());
-        for (int i = 0; i <= array.length - 1; i++) {
-            int currentNumber = array[i];
 
-            for (int j = i + 1; j <= array.length - 1; j++) {
-                int combination = currentNumber + array[j];
+        // обхождам прочетения масив
+        for (int position = 0; position <= array.length - 1; position++) {
+            //запазвам сегашното число от масива
+            int currentNumber = array[position];
+
+            // обхождам масива след сегащното число
+            for (int nextPosition = position + 1; nextPosition <= array.length - 1; nextPosition++) {
+
+                //намирам комбинацията
+                int combination = currentNumber + array[nextPosition];
+                //проверавам дали комбинацията е равна на магическото число
                 if (combination == magicNumber) {
-                    System.out.println(currentNumber + " " + array[j]);
+                    System.out.println(currentNumber + " " + array[nextPosition]);
                 }
             }
 
