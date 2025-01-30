@@ -14,12 +14,14 @@ public class CharactersInRange_03 {
 
     public static void printCharactersInRange(char firstChar, char secondChar) {
 
-        for (int i = Math.min(firstChar, secondChar) + 1; i < Math.max(secondChar,firstChar) ; i++) {
-            System.out.printf("%c ", i);
-        }
-
-       /* for (char i = (char) (firstChar/secondChar); i < firstChar/secondChar ; i++) {
-            System.out.printf("%c ", i);
-        }*/
+       if (firstChar < secondChar) {
+           for (int asciiValue = firstChar + 1; asciiValue < secondChar; asciiValue++) {
+               System.out.print((char) asciiValue + " ");
+           }
+       } else {
+           for (int asciiValue = secondChar + 1; asciiValue < firstChar; asciiValue++) {
+               System.out.print((char) asciiValue + " ");
+           }
+       }
     }
 }
