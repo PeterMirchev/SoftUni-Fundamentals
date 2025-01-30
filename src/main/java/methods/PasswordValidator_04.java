@@ -25,6 +25,7 @@ public class PasswordValidator_04 {
             System.out.println("Password must have at least 2 digits");
         }
 
+        // ако и трите условия са спазени принтирам, че паролата е валидна
         if (isLengthValid && containsAtLeast2Digits && containsCharactersAndLetters) {
             System.out.println("Password is valid");
         }
