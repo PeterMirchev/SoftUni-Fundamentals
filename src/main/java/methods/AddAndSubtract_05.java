@@ -10,8 +10,8 @@ public class AddAndSubtract_05 {
         int secondNumber = Integer.parseInt(scanner.nextLine());
         int thirdNumber = Integer.parseInt(scanner.nextLine());
 
-        int sumNumber = sum(firstNumber, secondNumber);
-        int result = subtract(sumNumber, thirdNumber);
+        int sumNumbers = sum(firstNumber, secondNumber);
+        int result = subtract(sumNumbers, thirdNumber);
 
         System.out.println(result);
     }
@@ -21,9 +21,9 @@ public class AddAndSubtract_05 {
         return firstNumber + secondNumber;
     }
 
-    public static int subtract(int sumNumber, int thirdNumber) {
+    public static int subtract(int sumNumbers, int thirdNumber) {
 
-        return  sumNumber - thirdNumber;
+        return  sumNumbers - thirdNumber;
     }
 
 }

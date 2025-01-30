@@ -10,21 +10,21 @@ public class PalindromeIntegers_09 {
 
         while (!input.equals("END")) {
 
-            validatePalindrome(input);
-
+            System.out.println(validatePalindrome(input));
             input = scanner.nextLine();
         }
     }
 
-    public static void validatePalindrome(String number) {
+    public static boolean validatePalindrome(String input) {
 
         String reversed = "";
 
-        for (int i = number.length() - 1; i >= 0 ; i--) {
+        // обхождам стринга отазд напред
+        for (int i = input.length() - 1; i >= 0 ; i--) {
 
-            reversed += number.charAt(i);
+            reversed += input.charAt(i);
         }
 
-        System.out.println(reversed.equals(number));
+       return reversed.equals(input);
     }
 }

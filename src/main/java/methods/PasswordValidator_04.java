@@ -8,11 +8,14 @@ public class PasswordValidator_04 {
 
         String password = scanner.nextLine();
 
-        boolean validLength = validateLength(password);
+        // 1 - проверяваме дали дължината на паролата е между 6 и 10 символа
+        boolean isLengthValid = validateLength(password);
+        // 2 - проверяваме дали паролата се състои само от цифри и букви
         boolean containsCharactersAndLetters = validateCharacters(password);
+        // 3 - проверяваме дали паролата има поне 2 цифри
         boolean containsAtLeast2Digits = validateDigits(password);
 
-        if (!validLength) {
+        if (!isLengthValid) {
             System.out.println("Password must be between 6 and 10 characters");
         }
         if (!containsCharactersAndLetters) {
@@ -22,27 +25,30 @@ public class PasswordValidator_04 {
             System.out.println("Password must have at least 2 digits");
         }
 
-        if (validLength && containsAtLeast2Digits && containsCharactersAndLetters) {
+        if (isLengthValid && containsAtLeast2Digits && containsCharactersAndLetters) {
             System.out.println("Password is valid");
         }
     }
 
     public static boolean validateLength(String password) {
 
+        // return password.length() >= 6 && password.length() <= 10
         if (password.length() >= 6 && password.length() <= 10) {
             return true;
         }
-
         return false;
     }
 
     public static boolean validateCharacters(String password) {
 
+        // превръщам един стринг в масив от символи -
         for (char symbol : password.toCharArray()) {
+            // извиквам класа Character и метода който проверява дали един символ е буква или цифра
             if (!Character.isLetterOrDigit(symbol)) {
                 return false;
             }
         }
+
         return true;
     }
 
