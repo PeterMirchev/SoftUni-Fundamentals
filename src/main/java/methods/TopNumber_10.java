@@ -8,13 +8,16 @@ public class TopNumber_10 {
 
         int n = Integer.parseInt(scanner.nextLine());
 
-        for (int i = 1; i <= n; i++) {
+        for (int number = 1; number <= n; number++) {
 
-            boolean isDivisibleBy8 = validateDivisibleBy8(i);
-            boolean containsOddDigit = validateOddDigit(i);
+            // 1 - проверявам дали числото се дели на 8
+            boolean isDivisibleBy8 = validateDivisibleBy8(number);
+            // 2 - проверявам дали числото има поне една нечетна цифра
+            boolean containsOddDigit = validateOddDigit(number);
 
+            // 3 - ако числото се седли на 8 и има поне една нечетна цифра го принтирам
             if (isDivisibleBy8 && containsOddDigit) {
-                System.out.println(i);
+                System.out.println(number);
             }
         }
     }
@@ -23,9 +26,11 @@ public class TopNumber_10 {
 
         int sum = 0;
         while (number > 0) {
-
+            // 1 - взимам последната цифра
             int lastDigit = number % 10;
+            // 2 - пробавям цифрата към сумата
             sum += lastDigit;
+            // 3 - махам последната цифра
             number = number / 10;
         }
 
@@ -35,12 +40,18 @@ public class TopNumber_10 {
     private static boolean validateOddDigit(int number) {
 
         while (number > 0) {
+            // 1 - взимам последната цифра
             int lastDigit = number % 10;
+            // 2 - правя проверка дали е нечетна цифра
             if (lastDigit % 2 != 0) {
+                // ако е нечетна цифра връщам true
                 return true;
             }
+            // махам последната цифра
             number = number / 10;
         }
+
+        // ако не съм намерил нечетна цифра, връщам false
         return false;
     }
 }
