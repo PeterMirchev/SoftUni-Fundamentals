@@ -6,68 +6,69 @@ public class ForceBook_09 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        LinkedHashMap<String, List<String>> groupsAndUsers = new LinkedHashMap<>();
+        LinkedHashMap<String, List<String>> teams = new LinkedHashMap<>();
         String input = scanner.nextLine();
         while (!input.equals("Lumpawaroo")) {
 
             if (input.contains("|")) {
-                String forceSide = input.split(" \\| ")[0];
-                String user = input.split(" \\| ")[1];
 
-                if (groupsAndUsers.containsKey(forceSide) && groupsAndUsers.get(forceSide).contains(user)) {
-                    input = scanner.nextLine();
-                    continue;
-                } else if (groupsAndUsers.containsKey(forceSide) && !groupsAndUsers.get(forceSide).contains(user)) {
-                    groupsAndUsers.get(forceSide).add(user);
-                } else {
-                    List<String> users = new ArrayList<>();
-                    users.add(user);
-                    groupsAndUsers.put(forceSide, users);
+                String teamName = input.split(" \\| ")[0];
+                String playerName = input.split(" \\| ")[1];
+
+                //1. ако няма такъв отбор, създаваме нов с празен списък от играчи
+                if (!teams.containsKey(teamName)) {
+                    teams.put(teamName, new ArrayList<>());
                 }
+
+                //2. проверявам дали такъв играч, вече фигурира в друг отбор
+                boolean isThisPlayerPartOfAnotherTeam = false;
+                //teams.values().for -> връща списък с всички валюта от мапа - дава ми всички листове заедно
+                for (List<String> team : teams.values()) {
+                    if (team.contains(playerName)) {
+                        isThisPlayerPartOfAnotherTeam = true;
+                        break;
+                    }
+                }
+
+                //3. ако не фигурира към друг отбор, ще го провабим към този
+                if (!isThisPlayerPartOfAnotherTeam) {
+                    teams.get(teamName).add(playerName);
+                }
+
             } else if (input.contains("->")) {
-                String user = input.split(" -> ")[0];
-                String forceSide = input.split(" -> ")[1];
 
-                removeUserFromForceSide(groupsAndUsers, user);
+                String playerName = input.split(" -> ")[0];
+                String teamName = input.split(" -> ")[1];
 
-                if (!groupsAndUsers.containsKey(forceSide)) {
-                    List<String> users = new ArrayList<>();
-                    users.add(user);
-                    groupsAndUsers.put(forceSide, users);
-                } else {
-                    groupsAndUsers.get(forceSide).add(user);
+                //1. обхождам всочки отбори и премахвам играча от текущия му отбор
+                //teams.values().for -> връща списък с всички валюта от мапа - дава ми всички листове заедно
+                for (List<String> team : teams.values()) {
+                    //тук няма нужда да проверявам дали има такъв играч, защото тази операция премахва елемент, само ако той съществува
+                    team.remove(playerName);
                 }
-                System.out.printf("%s joins the %s side!%n", user, forceSide);
-
+                //2. ако няма такъв отбор, създаваме нов отбор с празен списък уи след това добавян играча
+                if (teams.containsKey(teamName)) {
+                    teams.get(teamName).add(playerName);
+                } else {
+                    teams.put(teamName, new ArrayList<>());
+                    teams.get(teamName).add(playerName);
+                }
+                System.out.printf("%s joins the %s side!\n", playerName, teamName);
             }
+
             input = scanner.nextLine();
         }
 
-       /* for (Map.Entry<String, List<String>> entry : groupsAndUsers.entrySet()) {
+        for (Map.Entry<String, List<String>> entry : teams.entrySet()) {
 
-            if (entry.getValue().size() == 0) {
-                continue;
-            }
-            System.out.printf("Side: %s, Members: %d%n", entry.getKey(), entry.getValue().size());
-            for (String user : entry.getValue()) {
-                System.out.println("! " + user);
-            }
-        }*/
+            String teamName = entry.getKey();
+            List<String> players = entry.getValue();
 
-        groupsAndUsers.forEach((k, v) -> {
-            if (!v.isEmpty()) {
-                System.out.printf("Side: %s, Members: %d%n", k, v.size());
-            }
-            v.forEach( user -> System.out.println("! " + user));
-        });
-    }
+            //принтирам само ако имам играчи в отбора
+            if(!players.isEmpty()) {
+                System.out.printf("Side: %s, Members: %d%n", teamName, players.size());
 
-    private static void removeUserFromForceSide(LinkedHashMap<String, List<String>> groupsAndUsers, String user) {
-        for (Map.Entry<String, List<String>> entry : groupsAndUsers.entrySet()) {
-
-            if (entry.getValue().contains(user)) {
-                entry.getValue().remove(user);
-                break;
+                players.forEach(player -> System.out.printf("! %s\n", player));
             }
         }
     }

@@ -27,16 +27,20 @@ public class CompanyUsers_08 {
             input = scanner.nextLine();
         }
 
-       /* for (Map.Entry<String,List<String>> entry : companiesAndEmployees.entrySet()) {
-            System.out.println(entry.getKey());
-            for (String employee : entry.getValue()) {
+        for (Map.Entry<String,List<String>> entry : companiesAndEmployees.entrySet()) {
+
+            String company = entry.getKey();
+            List<String> employeeId = entry.getValue();
+
+            System.out.println(company);
+            for (String employee : employeeId) {
                 System.out.println("-- " + employee);
             }
-        }*/
+        }
 
-        companiesAndEmployees.forEach((key, value) -> {
-            System.out.println(key);
-            value.forEach( employee -> System.out.println("-- " + employee));
-        });
+     /*   companiesAndEmployees.entrySet().forEach(entry -> {
+            System.out.println(entry.getKey());
+            entry.getValue().forEach( employee -> System.out.println("-- " + employee));
+        });*/
     }
 }
