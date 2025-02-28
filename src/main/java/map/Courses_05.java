@@ -1,9 +1,6 @@
 package map;
 
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Courses_05 {
     public static void main(String[] args) {
@@ -11,32 +8,35 @@ public class Courses_05 {
 
         String input = scanner.nextLine();
 
-        LinkedHashMap<String, LinkedList<String>> coursesAndStudents = new LinkedHashMap<>();
+        LinkedHashMap<String, List<String>> courses = new LinkedHashMap<>();
         while (!input.equals("end")) {
 
-            String course = input.split(" : ")[0];
+            String courseName = input.split(" : ")[0];
             String student = input.split(" : ")[1];
 
-            if (coursesAndStudents.containsKey(course)) {
-                coursesAndStudents.get(course).add(student);
-            } else {
-                LinkedList<String> students = new LinkedList<>();
-                students.add(student);
-                coursesAndStudents.put(course, students);
+            //проверявам дали нямам такъв курс
+            if (!courses.containsKey(courseName)) {
+                courses.put(courseName, new ArrayList<>());
             }
+
+            courses.get(courseName).add(student);
+
             input = scanner.nextLine();
         }
 
-       /* for (Map.Entry<String, LinkedList<String>> entry : coursesAndStudents.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue().size());
-            for (int i = 0; i < entry.getValue().size(); i++) {
-                System.out.printf("-- %s%n", entry.getValue().get(i));
-            }
-        }*/
+        for (Map.Entry<String, List<String>> entry : courses.entrySet()) {
 
-        coursesAndStudents.forEach((key, value) -> {
+            String courseName = entry.getKey();
+            List<String> studentsNames = entry.getValue();
+
+            System.out.println(courseName + ": " + studentsNames.size());
+
+            studentsNames.forEach(name -> System.out.println("-- " + name));
+        }
+/*
+        courses.forEach((key, value) -> {
             System.out.println(key + ": " + value.size());
             value.forEach(student -> System.out.println("-- " + student));
-        });
+        });*/
     }
 }
