@@ -23,7 +23,11 @@ public class Main {
             input = scanner.nextLine();
         }
 
+        //Comparator.comparing - подрежда във възходящт ред - лексикографски
         personList.sort(Comparator.comparing(Person::getAge));
-        personList.forEach(System.out::println);
+
+        for (Person person : personList) {
+            System.out.printf("%s with ID: %s is %s years old.\n", person.getName(), person.getId(), person.getAge());
+        }
     }
 }

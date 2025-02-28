@@ -12,29 +12,32 @@ public class Main {
                 .stream(scanner.nextLine().split(", "))
                 .toList();
 
-        int n = Integer.parseInt(scanner.nextLine());
-
         String title = articleContent.get(0);
         String content = articleContent.get(1);
         String author = articleContent.get(2);
 
         Article article = new Article(title, content, author);
 
+        int n = Integer.parseInt(scanner.nextLine());
         for (int i = 1; i <= n; i++) {
 
             String input = scanner.nextLine();
             String command = input.split(": ")[0];
-            String text = input.split(": ")[1];
+            String newContent = input.split(": ")[1];
 
             if (command.equals("Edit")) {
-                article.edit(text);
+                //променям съдържанието
+                article.edit(newContent);
             } else if (command.equals("ChangeAuthor")) {
-                article.changeAuthor(text);
+                //променям автора
+                article.changeAuthor(newContent);
             } else if (command.equals("Rename")) {
-                article.rename(text);
+                //променям заглавието
+                article.rename(newContent);
             }
         }
 
         System.out.println(article.toString());
+        //System.out.printf("%s - %s: %s\n",article.getTitle(), article.getContent(), article.getAuthor());
     }
 }

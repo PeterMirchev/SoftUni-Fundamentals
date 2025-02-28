@@ -15,18 +15,6 @@ public class Vehicle {
         this.horsepower = horsepower;
     }
 
-    @Override
-    public String toString() {
-
-        StringBuilder sb = new StringBuilder();
-        sb.append("Type: ").append(type).append("\n")
-                .append("Model: ").append(model).append("\n")
-                .append("Color: ").append(color).append("\n")
-                .append("Horsepower: ").append(horsepower);
-
-        return sb.toString();
-    }
-
     public String getType() {
         return type;
     }

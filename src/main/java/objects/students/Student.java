@@ -17,12 +17,11 @@ public class Student {
         return grade;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        //first name} {second name}: {grade}".
-        sb.append(firstName).append(" ").append(lastName).append(": ").append("%.2f".formatted(grade));
+    public String getFirstName() {
+        return firstName;
+    }
 
-        return sb.toString();
+    public String getLastName() {
+        return lastName;
     }
 }

@@ -8,26 +8,33 @@ public class AMinerTask_02 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String input = scanner.nextLine();
+        String resource = scanner.nextLine();
         LinkedHashMap<String, Integer> resources = new LinkedHashMap<>();
-        while (!input.equals("stop")) {
+        while (!resource.equals("stop")) {
 
             int quantity = Integer.parseInt(scanner.nextLine());
 
-            if (resources.containsKey(input)) {
-                int currentQuantity = resources.get(input);
-                resources.put(input, currentQuantity + quantity);
+            //проверявам дали вече имам такър ресурс в мапа
+            if (resources.containsKey(resource)) {
+                //взимам сегашното количество
+                int currentQuantity = resources.get(resource);
+                //запазвам ресурса със сегашното количество + новото
+                resources.put(resource, currentQuantity + quantity);
             } else {
-                resources.put(input, quantity);
+                resources.put(resource, quantity);
             }
 
-            input = scanner.nextLine();
+            resource = scanner.nextLine();
         }
 
         //resources.forEach((key, value) -> System.out.println(key + " -> " + value));
 
+        //resources.entrySet().forEach(entry -> System.out.printf("%s -> %s\n", entry.getKey(), entry.getValue()));
+
         for (Map.Entry<String, Integer> entry : resources.entrySet()) {
             System.out.println(entry.getKey() + " -> " + entry.getValue());
         }
+
+
     }
 }

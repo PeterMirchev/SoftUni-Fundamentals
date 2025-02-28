@@ -18,11 +18,18 @@ public class Main {
             int age = Integer.parseInt(input[1]);
 
             Person person = new Person(name, age);
-            users.add(person);
+
+            if (person.getAge() > 30) {
+                users.add(person);
+            }
         }
 
-        users.stream()
+        for (Person user : users) {
+            System.out.println(user.getName() + " - " + user.getAge());
+        }
+
+  /*      users.stream()
                 .filter(u -> u.getAge() > 30)
-                .forEach(System.out::println);
+                .forEach(System.out::println);*/
     }
 }

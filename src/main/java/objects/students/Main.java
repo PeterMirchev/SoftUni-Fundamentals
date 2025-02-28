@@ -22,8 +22,11 @@ public class Main {
             students.add(student);
         }
 
+        //Comparator.comparing - подрежда във възходящт ред - лексикографски. -> .reverser() - ще ги обърне
         students.sort(Comparator.comparing(Student::getGrade).reversed());
 
-        students.forEach(System.out::println);
+        for (Student student : students) {
+            System.out.printf("%s %s: %.2f\n",student.getFirstName(), student.getLastName(), student.getGrade());
+        }
     }
 }

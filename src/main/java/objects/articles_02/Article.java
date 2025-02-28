@@ -1,11 +1,12 @@
 package objects.articles_02;
 
 public class Article {
-
+    //характеристики - fields
     private String title;
     private String content;
     private String author;
 
+    //public custom constructor
     public Article(String title, String content, String author) {
 
         this.title = title;
@@ -13,29 +14,36 @@ public class Article {
         this.author = author;
     }
 
-    public void edit(String content) {
+    //променям съдържанието
+    public void edit(String newContent) {
 
-        this.content = content;
+        this.content = newContent;
     }
 
-    public void changeAuthor(String author) {
-
-        this.author = author;
+    public void changeAuthor(String newAuthor) {
+        //променям автора
+        this.author = newAuthor;
     }
 
-    public void rename(String title) {
-
-        this.title = title;
+    public void rename(String newTitle) {
+        //променям заглавието
+        this.title = newTitle;
     }
 
     @Override
     public String toString() {
+        return String.format("%s - %s: %s", title, content, author);
+    }
 
-        StringBuilder sb = new StringBuilder();
+    public String getTitle() {
+        return title;
+    }
 
-        sb.append(title + " - ")
-                .append(content + ": ")
-                .append(author);
-        return sb.toString();
+    public String getContent() {
+        return content;
+    }
+
+    public String getAuthor() {
+        return author;
     }
 }

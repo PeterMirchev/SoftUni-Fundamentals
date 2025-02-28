@@ -34,15 +34,15 @@ public class Main {
         String model = scanner.nextLine();
         while (!model.equals("Close the Catalogue")) {
 
-         /*   for (Vehicle v : vehicles) {
-                if (v.getModel().equals(model)) {
-                    System.out.println(v.toString());
+            for (Vehicle vehicle : vehicles) {
+                //проверявам модела на автомобила
+                if (vehicle.getModel().equals(model)) {
+                    System.out.println("Type: " + vehicle.getType());
+                    System.out.println("Model: " + vehicle.getModel());
+                    System.out.println("Color: " + vehicle.getColor());
+                    System.out.println("Horsepower: " + vehicle.getHorsepower());
                 }
-            }*/
-            String currentModel = model;
-            vehicles.stream()
-                    .filter(v -> v.getModel().equals(currentModel))
-                    .forEach(System.out::println);
+            }
 
             model = scanner.nextLine();
         }
@@ -57,15 +57,16 @@ public class Main {
 
     private static double getAvgHorsePower(List<Vehicle> vehicles, String type) {
 
-        int sum = vehicles
-                .stream()
-                .filter(v -> v.getType().equals(type))
-                .mapToInt(Vehicle::getHorsepower)
-                .sum();
+        int count = 0;
+        double sum = 0;
 
-        double count = vehicles.stream()
-                .filter(v -> v.getType().equals(type))
-                .count();
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getType().equals(type)) {
+                sum += vehicle.getHorsepower();
+                count++;
+            }
+
+        }
 
         if (count == 0 || sum == 0) {
             return 0;

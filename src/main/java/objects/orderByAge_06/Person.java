@@ -24,15 +24,4 @@ public class Person {
     public int getAge() {
         return age;
     }
-
-    @Override
-    public String toString() {
-
-        StringBuilder sb = new StringBuilder();
-        //Stephan with ID: 524244 is 10 years old.
-        sb.append(name).append(" with ID: ").append(id)
-                .append(" is ").append(age).append(" years old.");
-
-        return sb.toString();
-    }
 }
