@@ -13,6 +13,7 @@ public class StudentAcademy_06 {
             String name = scanner.nextLine();
             double grade = Double.parseDouble(scanner.nextLine());
 
+            //проверявам дали имам студент с това име
             if (studentsAndGrades.containsKey(name)) {
                 studentsAndGrades.get(name).add(grade);
             } else {
@@ -22,48 +23,38 @@ public class StudentAcademy_06 {
             }
         }
 
-        /*for (Map.Entry<String, List<Double>> entry : studentsAndGrades.entrySet()) {
-            double avgGrade = 0;
-            for (int i = 0; i < entry.getValue().size(); i++) {
-                avgGrade += entry.getValue().get(i);
-            }
+        for (Map.Entry<String, List<Double>> entry : studentsAndGrades.entrySet()) {
 
-            avgGrade = avgGrade / entry.getValue().size();
+            String studentName = entry.getKey();
+            List<Double> grades = entry.getValue();
+
+            //Option 1
+            double sum = grades.stream().mapToDouble(Double::doubleValue).sum();
+
+           /* //Option 2
+            double sum = 0;
+            for (Double grade : grades) {
+                sum += grade;
+            }
+*/
+            double avgGrade = sum / grades.size();
             if (avgGrade >= 4.5) {
-                System.out.printf("%s -> %.2f%n", entry.getKey(), avgGrade);
+                System.out.printf("%s -> %.2f%n", studentName, avgGrade);
             }
-        }*/
+        }
 
-        studentsAndGrades.entrySet()
-                .stream().filter( k -> {
-                    double grades = k.getValue().stream()
-                            .mapToDouble(Double::doubleValue)
-                            .sum();
-                    return grades / k.getValue().size() >= 4.5;
-                })
-                .forEach(k -> {
-                    double grades = k.getValue().stream()
-                            .mapToDouble(Double::doubleValue)
-                            .sum();
-                    System.out.printf("%s -> %.2f%n", k.getKey(), grades / k.getValue().size());
-                });
         /*studentsAndGrades.entrySet()
-                .stream()
-                .filter(entry -> {
-                    // Calculate the average grade for the filter condition
-                    double average = entry.getValue().stream()
+                .stream().filter( entry -> {
+                    double grades = entry.getValue().stream()
                             .mapToDouble(Double::doubleValue)
-                            .average()
-                            .orElse(0.0);
-                    return average >= 4.5; // Keep only students with an average >= 4.5
+                            .sum();
+                    return grades / entry.getValue().size() >= 4.5;
                 })
                 .forEach(entry -> {
-                    // Reuse the filter condition's logic for clarity but inlined for output
-                    double average = entry.getValue().stream()
+                    double grades = entry.getValue().stream()
                             .mapToDouble(Double::doubleValue)
-                            .average()
-                            .orElse(0.0);
-                    System.out.printf("%s -> %.2f%n", entry.getKey(), average);
+                            .sum();
+                    System.out.printf("%s -> %.2f%n", entry.getKey(), grades / entry.getValue().size());
                 });*/
     }
 

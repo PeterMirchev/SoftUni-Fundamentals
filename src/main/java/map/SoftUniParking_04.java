@@ -38,6 +38,7 @@ public class SoftUniParking_04 {
         //liftOfUsers.forEach( (k, v) -> System.out.println(k + " => " + v));
 
         for (Map.Entry<String, String> entry : liftOfUsers.entrySet()) {
+
             System.out.println(entry.getKey() + " => " + entry.getValue());
         }
     }
