@@ -6,7 +6,8 @@ public class LettersChangeNumbers_08 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String[] codes = scanner.nextLine().split("\\s+");
+        //"A12b s17G"
+        String[] codes = scanner.nextLine().split("\\s+"); //["A12b","s17G"]
 
         double sum = 0;
 
