@@ -21,5 +21,19 @@ public class ExtractFile_03 {
 
         System.out.println("File name: " + fileName);
         System.out.println("File extension: " + fileExtension);
+
+
+        //-----------------------------
+       /* String input = scanner.nextLine();
+
+        int lastSlashIndex = input.lastIndexOf("\\");
+        int dotIndex = input.lastIndexOf(".");
+
+        String file = input.substring(lastSlashIndex + 1, dotIndex);
+        String extension = input.substring(dotIndex + 1);
+
+        System.out.println("File name: " + file);
+        System.out.println("File extension: " + extension);*/
+
     }
 }
