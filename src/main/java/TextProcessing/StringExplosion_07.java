@@ -8,6 +8,7 @@ public class StringExplosion_07 {
 
         String input = scanner.nextLine();
 
+        //запазвам входа в стринг билдър за да не извършвам тежки операции със стринг
         StringBuilder textBuilder = new StringBuilder(input);
 
         int totalPower = 0;
@@ -15,11 +16,14 @@ public class StringExplosion_07 {
 
             char currentSymbol = textBuilder.charAt(position);
 
+            //проверявам дали имам експлозия
             if (currentSymbol == '>') {
                 //взимам сегашната сила
                 int power = Integer.parseInt(textBuilder.charAt(position + 1) + "");
                 //прибавям сегашната сила в обща променлива, която ми пази общата сила, както е казано по условие.
                 totalPower += power;
+
+                //правя проверка дали имам сила за премахване на елементи
             } else if (totalPower > 0) {
                 textBuilder.deleteCharAt(position);
                 //намалявам силата с 1

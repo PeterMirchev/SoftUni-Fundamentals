@@ -13,6 +13,7 @@ public class LettersChangeNumbers_08 {
 
         for (String code : codes) {
 
+            //намирам резултата
             double result = calculateCodeResult(code);
 
             sum += result;
